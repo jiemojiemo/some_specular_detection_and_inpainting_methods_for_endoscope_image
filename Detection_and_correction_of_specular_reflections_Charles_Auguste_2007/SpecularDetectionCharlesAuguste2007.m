@@ -1,4 +1,4 @@
-function [specular_mask] = SpecularDetectionCharlesAuguste2007(img,inputArg2)
+function [specular_mask] = SpecularDetectionCharlesAuguste2007(img)
 
 % Step 1: reflection enhancemnt
 enhanced = reflection_enhance(im2double(img));
@@ -11,7 +11,6 @@ denoised_hist = histogram_denoise(enhanced_gray);
 
 % Step 3: Specular bump thresholding
 threshold = find_specular_bump_threshold(denoised_hist);
-threshold = 190;
 
 % Step 4: Specular lobe detection
 specular_mask_rgb = (enhanced_gray >= (threshold));
